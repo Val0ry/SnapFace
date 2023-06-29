@@ -1,49 +1,85 @@
+.card-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
 .card {
-	height: 254px;
-	width: 190px;
+	height: 800px;
+	width: 800px;
 	position: relative;
 	transition: all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 	border-radius: 16px;
 	box-shadow: 0 0 20px 8px #d0d0d0;
 	overflow: hidden;
+
+	.like-button {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		border: none;
+		background: none;
+		color: red;
+		font-size: 5rem;
+		display: none;
+		visibility: hidden;
+	}
+
+	.like-button.animate {
+		display: block;
+		visibility: visible;
+		animation: like-animation 1s ease-in-out, like-animation .5s ease-in-out .5s reverse backwards
+	}
+
+	.heartico {
+		width: 15px;
+		height: 15px;
+	}
+
+	.heart {
+		width: 64px;
+		height: 61px;
+	}
+
+	@keyframes like-animation {
+		from {
+			opacity: 0;
+			transform: translate(-50%, -50%) scale(1);
+		}
+		to {
+			opacity: 1;
+			transform: translate(-50%, -50%) scale(2);
+		}
+	}
+
+	&-image {
+		background: cover/no-repeat;
+		position: absolute;
+		transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+	}
+
+	&-description {
+		display: flex;
+		position: absolute;
+		flex-direction: column;
+		background-color: #f5f5f5;
+		color: #212121;
+		height: 20%;
+		width: 100%;
+		bottom: 0;
+		padding-bottom: 8%;
+		padding-left: 2%;
+
+		.text-title {
+			font-size: 1.3rem;
+			font-weight: 700;
+		}
+
+		.text-body {
+			font-size: 0.5rem;
+		}
+
+	}
 }
-
- /*Image*/
- .card-image {
- 	background: cover/no-repeat;
- 	position: absolute;
- 	transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
- }
-
-/*Description */
-.card-description {
-	display: flex;
-	position: absolute;
-	gap: .5em;
-	flex-direction: column;
-	background-color: #f5f5f5;
-	color: #212121;
-	height: 70%;
-	bottom: 0;
-	border-radius: 16px;
-	transition: all 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-	padding: 1rem;
-}
-
-/*Text*/
-.text-title {
-	font-size: 1.3rem;
-	font-weight: 700;
-}
-
-.text-body {
-	font-size: 1rem;
-	line-height: 130%;
-}
-
-
-/* Hover states */
-.card:hover .card-description {
-	transform: translateY(100%);
-}
-

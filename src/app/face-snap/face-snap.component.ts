@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FaceSnap } from '../models/face-snaps.models';
 
 @Component({
   selector: 'app-face-snap',
@@ -6,17 +7,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./face-snap.component.scss']
 })
 export class FaceSnapComponent implements OnInit {
+  @Input() faceSnap!: FaceSnap;
+
   title!: string;
   description!: string;
   createdDate!: Date;
   snaps!: number;
+  buttonLike!: string;
   imageUrl!: string;
 
-  ngOnInit(){
+  ngOnInit() {
     this.title = "OceanGate";
-    this.description = "Ami d'enfance";
+    this.description = "Mon sous-marin préfére";
     this.createdDate = new Date();
-    this.snaps = 6;
-    this.imageUrl = "https://cdn.pixabay.com/photo/2013/07/30/15/07/submarine-168884_1280.jpg";
+    this.snaps = 189;
+    this.buttonLike = "Like";
+    this.imageUrl = "assets/submarine-168884_1280.jpg";
   }
+
+  onLike() {
+    if (this.buttonLike === "Like") {
+      this.snaps++;
+      this.buttonLike = "Dislike";
+    } else {
+      this.snaps--;
+      this.buttonLike = "Like";
+    }
+  }
+
+  /* DoubleClick() {
+    const likeButton = document.querySelector('.like-button') as HTMLButtonElement;
+
+    likeButton.classList.add('animate');
+
+    setTimeout(() => {
+      likeButton.classList.remove('animate');
+    }, 1000);
+    this.snaps++;
+  } */
 }

@@ -1,11 +1,17 @@
-<div class="card">
-	<div class="card-image">
-		<img [src]="imageUrl" [alt]="title">
-	</div>
-	<div class="card-description">
-		<h2 class="text-title">{{ title }}</h2>
-		<p>Mis en ligne le {{ createdDate }}</p>
-		<p>{{ description }}</p>
-		<p> ❤ {{ snaps }}</p>
+<div class="card-container">
+	<div class="card">
+		<div class="card-image">
+			<img [src]="imageUrl" [alt]="faceSnap.title">
+			<button class="like-button"><img class="heart" src="assets/heart.png" alt="heart red"></button>
+		</div>
+		<div class="card-description">
+			<h2 class="text-title">{{ faceSnap.title }}</h2>
+			<p>Mis en ligne le {{ faceSnap.createdDate }}</p>
+			<p>{{ faceSnap.description }}</p>
+			<div>
+				<button (click)="onLike()"> {{ buttonLike }}</button>
+			</div>
+			<p><img class="heartico" src="assets/heart.png"> {{ faceSnap.snaps }}</p>
+		</div>
 	</div>
 </div>
